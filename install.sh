@@ -12,7 +12,7 @@ clear
 echo -e "${CYAN}"
 echo "╔═══════════════════════════════════════╗"
 echo "║      VPS Deploy Bot Installer 🚀      ║"
-echo "║         Script by HycroeDev           ║"
+echo "║         Script by FlaxxyPlayz         ║"
 echo "╚═══════════════════════════════════════╝"
 echo -e "${NC}"
 sleep 2
@@ -112,9 +112,12 @@ fi
 # ==============================
 # Done
 # ==============================
+
 echo -e "${GREEN}"
 echo "╔═══════════════════════════════════════╗"
 echo "║  Installation Complete! 🚀            ║"
-echo "║  Script made with ❤️ by HycroeDev     ║"
+echo "║  Script made with ❤️ by FlaxyPlayz   ║"
 echo "╚═══════════════════════════════════════╝"
 echo -e "${NC}"
+echo " Please there was a fault, clone the repo and give admin role, bot token etc in bot.py "
+echo " But first clone this https://github.com/NotFlexxy-1/vps-deploy-bot "
