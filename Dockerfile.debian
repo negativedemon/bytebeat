@@ -1,0 +1,15 @@
+FROM debian:12
+
+ENV container docker
+
+RUN apt update && apt install -y \
+    systemd systemd-sysv \
+    tmate openssh-server sudo curl wget iproute2 && \
+    mkdir -p /run/sshd && \
+    echo "root:root" | chpasswd && \
+    systemctl enable ssh && \
+    apt clean && rm -rf /var/lib/apt/lists/*
+
+STOPSIGNAL SIGRTMIN+3
+
+CMD ["/sbin/init"]

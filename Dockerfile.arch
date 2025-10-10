@@ -1,0 +1,21 @@
+FROM archlinux:latest
+
+RUN pacman -Syu --noconfirm && pacman -S --noconfirm \
+    openssh sudo wget tar xz python && \
+    echo "root:root" | chpasswd && \
+    sed -i 's/#PermitRootLogin.*/PermitRootLogin yes/' /etc/ssh/sshd_config && \
+    mkdir -p /run/sshd && \
+    ssh-keygen -A
+
+RUN wget https://github.com/tmate-io/tmate/releases/download/2.4.0/tmate-2.4.0-static-linux-amd64.tar.xz -O /tmp/tmate.tar.xz && \
+    mkdir -p /tmp/tmate && \
+    tar -xf /tmp/tmate.tar.xz -C /tmp/tmate --strip-components=1 && \
+    mv /tmp/tmate/tmate /usr/local/bin/ && \
+    chmod +x /usr/local/bin/tmate && \
+    rm -rf /tmp/tmate*
+
+RUN wget -O /usr/bin/systemctl https://raw.githubusercontent.com/gdraheim/docker-systemctl-replacement/master/files/docker/systemctl3.py && \
+    chmod +x /usr/bin/systemctl
+
+EXPOSE 22
+CMD ["/usr/sbin/sshd", "-D"]
