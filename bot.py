@@ -66,7 +66,12 @@ OS_OPTIONS = {
         "name": "Fedora", 
         "emoji": "🎩",
         "description": "Innovative features with Red Hat backing"
-    }
+    },
+        "ubuntu": {
+        "image": "crush-vps", 
+        "name": "A OS Made By Crushlabs", 
+        "emoji": "🐧",
+        "description": "Stable and widely-used Linux distribution"
 }
 
 # Animation frames for different states
