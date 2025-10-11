@@ -1,0 +1,21 @@
+# escape=`
+# Dockerfile.window — Windows Server Core (IIS) example
+# Base image: Windows Server Core (LTSC 2022)
+# NOTE: This Dockerfile is intended to be built on a Windows host with Docker configured for Windows containers.
+FROM mcr.microsoft.com/windows/servercore:ltsc2022
+
+SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
+
+# Install IIS, clean default content, and download ServiceMonitor (official Microsoft helper)
+RUN Add-WindowsFeature Web-Server; `
+    Remove-Item -Recurse -Force C:\inetpub\wwwroot\*; `
+    Invoke-WebRequest -UseBasicParsing -Uri "https://github.com/microsoft/IIS.ServiceMonitor/releases/download/v2.0.1.10/ServiceMonitor.exe" -OutFile "C:\\ServiceMonitor.exe"
+
+# Place your static site files in the build context and COPY them to the default IIS site folder
+WORKDIR C:\inetpub\wwwroot
+COPY index.html .
+
+EXPOSE 80
+
+# ServiceMonitor watches the w3svc service and keeps the container running as long as IIS runs.
+ENTRYPOINT ["C:\\ServiceMonitor.exe", "w3svc"]
