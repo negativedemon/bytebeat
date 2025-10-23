@@ -19,8 +19,8 @@ Simple docker build scripts for multiple Linux-based VPS containers.
 
 ## Installation
 
-- bash <(curl -fsSL https://github.com/NotFlexxy-1/vps-deploy-bot/main/install.sh)
+- Watch https://www.youtube.com/watch?v=pF3AEjZBkUc
 
 ## Credits
 
-- FlexxyPlayz | FlaxyNodes | CrushLabs
+- NegativeDemon | Made By Flaxxy Playz
